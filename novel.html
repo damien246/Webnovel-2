@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Novel – Détail</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-link">&larr; Retour</a>
+    <h1 id="novel-title">Titre du roman</h1>
+    <p id="novel-author" class="author"></p>
+  </header>
+  <main>
+    <section id="description-section">
+      <h2>Description</h2>
+      <p id="novel-description"></p>
+    </section>
+    <section id="chapters-section">
+      <h2>Chapitres</h2>
+      <ul id="chapter-list"></ul>
+    </section>
+    <section id="discussion-section">
+      <h2>Espace de discussion</h2>
+      <div id="message-list" class="message-list"></div>
+      <div class="message-input">
+        <input type="text" id="message-text" placeholder="Envoyer un message…">
+        <button id="send-button">Envoyer</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p><small>Prototype de plateforme de web‑novels – 2025</small></p>
+  </footer>
+</body>
+</html>
