@@ -1,15 +1,37 @@
+
+/*
+ * Stylesheet for the web‑novel prototype.
+ *
+ * A warm colour palette and card‑based layout provide an inviting reading platform reminiscent
+ * of popular storytelling services without directly copying them. Global variables allow
+ * consistent reuse of accent colours and gradients across components.
+ */
+
+:root {
+  /* Palette inspirée des tons chauds tout en restant unique */
+  --accent-color: #ff9f0a;
+  --accent-color-dark: #e68c00;
+  --bg-gradient-start: #fff7f0;
+  --bg-gradient-end: #ffe3c6;
+  --text-color: #333;
+  --muted-text: #777;
+}
+
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
-  color: #333;
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-header, footer {
-  background-color: #0366d6;
+/* Header styling for pages other than the landing page. The landing page uses
+   its own navbar and hero sections instead. */
+header {
+  background-color: var(--accent-color);
   color: white;
-  padding: 1rem;
+  padding: 1rem 2rem;
   text-align: center;
 }
 
@@ -18,10 +40,12 @@ header .back-link {
   text-decoration: none;
   display: inline-block;
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
+/* Generic main container for pages like novel.html */
 main {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -98,13 +122,156 @@ section {
 
 .message-input button {
   padding: 0.5rem 1rem;
-  background-color: #0366d6;
+  background-color: var(--accent-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .message-input button:hover {
-  background-color: #0253b3;
+  background-color: var(--accent-color-dark);
+}
+
+/* =============================================================================
+ * Landing page components
+ *
+ * The following styles define the appearance of the navigation bar, hero section
+ * and novel grid used on the home page. They create an inviting layout with
+ * warm colours, generous spacing and subtle interactions. Inspired by popular
+ * storytelling platforms but designed uniquely for this prototype.
+ */
+
+/* Navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accent-color);
+  padding: 1rem 2rem;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+.navbar .login-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.navbar .login-link:hover {
+  text-decoration: underline;
+}
+
+/* Hero section with tagline and call‑to‑action */
+.hero {
+  background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end));
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-color);
+}
+.hero .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.hero .cta:hover {
+  background-color: var(--accent-color-dark);
+}
+
+/* Novels section heading */
+.novels-section {
+  padding: 2rem 1rem;
+}
+.novels-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.5rem;
+}
+
+/* Grid layout for novel cards */
+.novel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual novel card */
+.novel-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.novel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.novel-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.novel-card .card-body {
+  padding: 1rem;
+  flex: 1;
+}
+.novel-card .card-body h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+.novel-card .card-body p.author {
+  margin: 0;
+  font-style: italic;
+  color: var(--muted-text);
+}
+.novel-card a.view-link {
+  margin-top: auto;
+  display: block;
+  padding: 0.75rem;
+  text-align: center;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: background-color 0.2s ease;
+}
+.novel-card a.view-link:hover {
+  background-color: var(--accent-color-dark);
+}
+
+/* Footer styling */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
 }
