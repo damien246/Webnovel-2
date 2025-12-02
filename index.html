@@ -10,14 +10,25 @@
 </head>
 <body>
   <header>
-    <h1>Web Novel</h1>
+    <nav class="navbar">
+      <h1 class="logo">Web Novel</h1>
+      <!-- Le lien de connexion peut pointer vers une future page d’authentification -->
+      <a href="#" class="login-link">Connexion</a>
+    </nav>
+    <div class="hero">
+      <h2>Écrivez et partagez vos histoires</h2>
+      <p>Découvrez un monde de récits captivants, publiez vos propres romans et échangez avec votre communauté.</p>
+      <a href="#novels" class="cta">Découvrir les romans</a>
+    </div>
   </header>
   <main>
-    <h2>Liste des romans</h2>
-    <ul id="novel-list" class="novel-list"></ul>
+    <section id="novels" class="novels-section">
+      <h2>Romans populaires</h2>
+      <div id="novel-grid" class="novel-grid"></div>
+    </section>
   </main>
   <footer>
-    <p>Prototype de plateforme de web‑novels – 2025</p>
+    <p><small>Prototype de plateforme de web‑novels – 2025</small></p>
   </footer>
 </body>
 </html>

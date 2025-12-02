@@ -25,6 +25,40 @@ function renderNovelList() {
   });
 }
 
+// Afficher la grille des romans sur la page d'accueil
+function renderNovelGrid() {
+  const gridElem = document.getElementById('novel-grid');
+  if (!gridElem) return;
+  novels.forEach(novel => {
+    const card = document.createElement('div');
+    card.className = 'novel-card';
+    // Image de couverture aléatoire pour chaque roman à partir de Unsplash
+    const img = document.createElement('img');
+    // Utiliser un paramètre "sig" pour obtenir une image différente pour chaque ID
+    img.src = `https://source.unsplash.com/random/400x300?book,novel&sig=${novel.id}`;
+    img.alt = novel.title;
+    card.appendChild(img);
+    // Corps de la carte
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    const titleElem = document.createElement('h3');
+    titleElem.textContent = novel.title;
+    body.appendChild(titleElem);
+    const authorElem = document.createElement('p');
+    authorElem.className = 'author';
+    authorElem.textContent = `par ${novel.author}`;
+    body.appendChild(authorElem);
+    card.appendChild(body);
+    // Lien pour consulter le roman
+    const link = document.createElement('a');
+    link.href = `novel.html?id=${encodeURIComponent(novel.id)}`;
+    link.className = 'view-link';
+    link.textContent = 'Lire';
+    card.appendChild(link);
+    gridElem.appendChild(card);
+  });
+}
+
 // Charger les détails du roman en fonction de l'ID passé dans l'URL
 function loadNovelDetail() {
   const params = new URLSearchParams(window.location.search);
@@ -70,5 +104,6 @@ function loadNovelDetail() {
 // À l'initialisation de chaque page, exécuter les fonctions appropriées
 document.addEventListener('DOMContentLoaded', () => {
   renderNovelList();
+  renderNovelGrid();
   loadNovelDetail();
 });
